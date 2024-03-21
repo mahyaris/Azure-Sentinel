@@ -31,7 +31,7 @@ Use the following steps to create your content structure:
   * Analytic Rules – yaml file templates of analytic rules goes in this folder.
   * Hunting queries – yaml file templates of hunting queries goes in this folder.
   * Playbooks – json playbook and Azure Logic Apps custom connectors can go in this folder. 
-  * Parser – txt file for Kusto Functions or Parsers can go in this folder.
+  * Parser – yaml file for Kusto Functions or Parsers can go in this folder. Use [this](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/CrowdStrike%20Falcon%20Endpoint%20Protection/Parsers/CrowdStrikeReplicatorV2.yaml) as reference.
   
   For example, see the folder structure for our [Cisco ISE solution](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Cisco%20ISE).
 
@@ -136,6 +136,6 @@ Quite simply, it permits your Microsoft Sentinel solution to be deployed into Mi
 You are **not** joining the CSP program.  Each offer is individually enabled or disabled for deployability in CSP sourced subscriptions, and setting this flag for your Microsoft Sentinel solution does not affect any other offer in your Marketplace publishing account.
 
 #### What will happen if you do not enable “CSP opt-in” for your Microsoft Sentinel solution offer?
-If the customer, who wants to deploy your solution offer, purchased their subscription from a CSP Reseller partner, the solution will not deploy and the customer will get an error message about why. 
+If the customer who wants to deploy your solution offer, purchased their subscription from a CSP Reseller partner, the solution will not deploy and the customer will get an error message about why. 
 
 
