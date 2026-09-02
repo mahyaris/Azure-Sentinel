@@ -296,13 +296,9 @@
                   "version": "KqlParameterItem/1.0",
                   "name": "Category",
                   "type": 2,
-                  "query": "FncEventsSuricata_CL\n| summarize by alert_category_s\n| order by alert_category_s asc",
-                  "typeSettings": {
-                    "additionalResourceOptions": []
-                  },
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsSuricata_CL'\n| summarize by su_sig_category\n| where isnotempty(su_sig_category)\n| order by su_sig_category asc",
                   "queryType": 0,
                   "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null,
                   "label": "Signature Category"
                 }
               ],
@@ -414,14 +410,12 @@
                   "version": "KqlParameterItem/1.0",
                   "name": "Category",
                   "type": 2,
-                  "query": "FncEventsSuricata_CL\n| summarize by alert_category_s\n| order by alert_category_s asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsSuricata_CL'\n| summarize by su_sig_category\n| where isnotempty(su_sig_category)\n| order by su_sig_category asc",
                   "typeSettings": {
-                    "additionalResourceOptions": [],
                     "showDefault": false
                   },
                   "queryType": 0,
                   "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null,
                   "label": "Signature Category"
                 },
                 {
@@ -430,13 +424,9 @@
                   "name": "Name",
                   "label": "Signature Name",
                   "type": 2,
-                  "query": "FncEventsSuricata_CL\n| summarize by alert_signature_s\n| order by alert_signature_s asc",
-                  "typeSettings": {
-                    "additionalResourceOptions": []
-                  },
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsSuricata_CL'\n| summarize by su_sig_name\n| where isnotempty(su_sig_name)\n| order by su_sig_name asc",
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 },
                 {
                   "id": "d60df3de-0e80-4f12-8234-bb8a4ea27cfb",
@@ -444,14 +434,12 @@
                   "name": "SensorID",
                   "label": "Sensor ID",
                   "type": 2,
-                  "query": "FncEventsSuricata_CL\n| summarize by sensor_id_s\n| order by sensor_id_s asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsSuricata_CL' or Type == 'FncEventsObservation_CL' or Type == 'FncEventsDetections_CL'\n| extend CombinedSensor = coalesce(su_sensor_id, ob_sensor_id, de_sensor_id)\n| summarize by CombinedSensor\n| where isnotempty(CombinedSensor)\n| order by CombinedSensor asc",
                   "typeSettings": {
-                    "additionalResourceOptions": [],
                     "showDefault": false
                   },
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 }
               ],
               "style": "pills",
@@ -856,7 +844,6 @@
                   }
                 ]
               },
-              "sortBy": [],
               "mapSettings": {
                 "locInfo": "LatLong",
                 "sizeSettings": "http_hostname_enrichments_ip_enrichments_asn_asn_d",
@@ -970,13 +957,9 @@
                   "name": "Title",
                   "label": "Observation Title",
                   "type": 2,
-                  "query": "FncEventsObservation_CL\n| summarize by title_s\n| order by title_s asc",
-                  "typeSettings": {
-                    "additionalResourceOptions": []
-                  },
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsObservation_CL'\n| summarize by ob_observation_title\n| where isnotempty(ob_observation_title)\n| order by ob_observation_title asc",
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 }
               ],
               "style": "pills",
@@ -1102,29 +1085,23 @@
                   "id": "43131f54-c638-41a3-a54c-d8768c2df468",
                   "version": "KqlParameterItem/1.0",
                   "name": "Title",
-                  "label": "Ovbservation Title",
+                  "label": "Observation Title",
                   "type": 2,
-                  "query": "FncEventsObservation_CL\n| summarize by title_s\n| order by title_s asc",
-                  "typeSettings": {
-                    "additionalResourceOptions": []
-                  },
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsObservation_CL'\n| summarize by ob_observation_title\n| where isnotempty(ob_observation_title)\n| order by ob_observation_title asc",
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 },
                 {
                   "id": "9ff7f038-1fa5-4ac1-84cb-ef8c6e91a183",
                   "version": "KqlParameterItem/1.0",
                   "name": "Sensor_ID",
                   "type": 2,
-                  "query": "FncEventsObservation_CL\n| summarize by sensor_id_s\n| order by sensor_id_s asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type in ('FncEventsSuricata_CL', 'FncEventsObservation_CL', 'FncEventsDetections_CL')\n| extend CombinedSensor = coalesce(su_sensor_id, ob_sensor_id, de_sensor_id)\n| summarize by CombinedSensor\n| where isnotempty(CombinedSensor)\n| order by CombinedSensor asc",
                   "typeSettings": {
-                    "additionalResourceOptions": [],
                     "showDefault": false
                   },
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 },
                 {
                   "id": "3e100d32-5ad3-4a4f-a486-f65be2c62101",
@@ -1165,6 +1142,57 @@
               "resourceType": "microsoft.operationalinsights/workspaces",
               "visualization": "table",
               "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "ob_confidence",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "Sev0",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "moderate",
+                          "representation": "Sev1",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "Sev2",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "ob_context",
+                    "formatter": 7,
+                    "formatOptions": {
+                      "linkTarget": "CellDetails",
+                      "linkLabel": "Context",
+                      "linkIsContextBlade": true
+                    }
+                  },
+                  {
+                    "columnMatch": "ob_evidence_iql",
+                    "formatter": 7,
+                    "formatOptions": {
+                      "linkTarget": "CellDetails",
+                      "linkLabel": "Evidence IQL",
+                      "linkIsContextBlade": true
+                    }
+                  }
+                ],
                 "rowLimit": 1000,
                 "filter": true,
                 "labelSettings": [
@@ -1385,8 +1413,7 @@
                     "label": "customer_id"
                   }
                 ]
-              },
-              "sortBy": []
+              }
             },
             "name": "FNC Observation List"
           }
@@ -1532,14 +1559,12 @@
                   "version": "KqlParameterItem/1.0",
                   "name": "Category",
                   "type": 2,
-                  "query": "FncEventsDetections_CL\n| summarize by Category\n| order by Category asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsDetections_CL'\n| summarize by de_category\n| where isnotempty(de_category)\n| order by de_category asc",
                   "typeSettings": {
-                    "additionalResourceOptions": [],
                     "showDefault": false
                   },
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 }
               ],
               "style": "pills",
@@ -1746,16 +1771,15 @@
                   "version": "KqlParameterItem/1.0",
                   "name": "Category",
                   "type": 2,
-                  "query": "FncEventsDetections_CL\n| summarize by Category\n| order by Category asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsDetections_CL'\n| summarize by de_category\n| where isnotempty(de_category)\n| order by de_category asc",
                   "typeSettings": {
-                    "additionalResourceOptions": [],
                     "showDefault": false
                   },
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": null
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 },
                 {
+                  "id": "fb9f063f-c68e-4f27-8693-160f8759f8b2",
                   "version": "KqlParameterItem/1.0",
                   "name": "RuleNames",
                   "type": 2,
@@ -1763,7 +1787,7 @@
                   "multiSelect": true,
                   "quote": "'",
                   "delimiter": ",",
-                  "query": "FncEventsDetections_CL\n| summarize by name_s\n| order by name_s asc",
+                  "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsDetections_CL'\n| summarize by de_rule_name\n| where isnotempty(de_rule_name)\n| order by de_rule_name asc",
                   "typeSettings": {
                     "additionalResourceOptions": [
                       "value::all"
@@ -1773,8 +1797,7 @@
                   },
                   "defaultValue": "value::all",
                   "queryType": 0,
-                  "resourceType": "microsoft.operationalinsights/workspaces",
-                  "id": "fb9f063f-c68e-4f27-8693-160f8759f8b2"
+                  "resourceType": "microsoft.operationalinsights/workspaces"
                 }
               ],
               "style": "pills",
@@ -1787,7 +1810,7 @@
             "type": 3,
             "content": {
               "version": "KqlItem/1.0",
-              "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsDetections_CL'\n| where de_created between ({TimeRange:start} .. {TimeRange:end})\n| where de_severity in ({Severity})\n| where de_confidence in ({Confidence})\n| where de_rule_name in ({RuleNames})\n| where isempty('{Category}') or (de_category == '{Category}')\n| sort by de_created desc\n| project-away su_*, ob_*\n\n",
+              "query": "Fortinet_FortiNDR_Cloud\n| where Type == 'FncEventsDetections_CL'\n| where de_created between ({TimeRange:start} .. {TimeRange:end})\n| where de_severity in ({Severity})\n| where de_confidence in ({Confidence})\n| where de_rule_name in ({RuleNames})\n| where isempty('{Category}') or (de_category == '{Category}')\n| sort by de_created desc\n| project-away su_*, ob_*\n\n\n\n",
               "size": 0,
               "showAnalytics": true,
               "title": "FNC Detection List",
@@ -1799,24 +1822,156 @@
               "visualization": "table",
               "showExpandCollapseGrid": true,
               "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "de_event_count",
+                    "formatter": 8,
+                    "formatOptions": {
+                      "min": 0,
+                      "palette": "yellowGreen",
+                      "compositeBarSettings": {
+                        "labelText": ""
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "de_events",
+                    "formatter": 7,
+                    "formatOptions": {
+                      "linkTarget": "CellDetails",
+                      "linkLabel": "Events",
+                      "linkIsContextBlade": true
+                    }
+                  },
+                  {
+                    "columnMatch": "de_indicators",
+                    "formatter": 7,
+                    "formatOptions": {
+                      "linkTarget": "CellDetails",
+                      "linkLabel": "Indicators",
+                      "linkIsContextBlade": true
+                    }
+                  },
+                  {
+                    "columnMatch": "de_status",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "colors",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "active",
+                          "representation": "greenDark",
+                          "text": "Active"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "resolved",
+                          "representation": "gray",
+                          "text": "Resolved"
+                        },
+                        {
+                          "operator": "Default",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "de_severity",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "Sev0",
+                          "text": "High"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "moderate",
+                          "representation": "Sev1",
+                          "text": "Moderate"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "Sev2",
+                          "text": "Low"
+                        },
+                        {
+                          "operator": "Default",
+                          "text": "{0}{1}"
+                        }
+                      ],
+                      "compositeBarSettings": {
+                        "labelText": ""
+                      }
+                    }
+                  },
+                  {
+                    "columnMatch": "de_confidence",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "low",
+                          "representation": "Sev2",
+                          "text": "Low"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "moderate",
+                          "representation": "Sev1",
+                          "text": "Moderate"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "high",
+                          "representation": "Sev0",
+                          "text": "High"
+                        },
+                        {
+                          "operator": "Default",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "de_rule_url",
+                    "formatter": 7,
+                    "formatOptions": {
+                      "linkTarget": "Url"
+                    }
+                  },
+                  {
+                    "columnMatch": "indicators",
+                    "formatter": 5,
+                    "formatOptions": {
+                      "linkTarget": "CellDetails",
+                      "linkIsContextBlade": true
+                    }
+                  }
+                ],
                 "rowLimit": 1000,
                 "filter": true,
                 "labelSettings": [
-                  {
-                    "columnId": "Type",
-                    "label": "Type"
-                  },
-                  {
-                    "columnId": "de_timestamp",
-                    "label": "timestamp"
-                  },
                   {
                     "columnId": "de_device_ip",
                     "label": "device_ip"
                   },
                   {
-                    "columnId": "de_status",
-                    "label": "status"
+                    "columnId": "de_event_count",
+                    "label": "event_count"
+                  },
+                  {
+                    "columnId": "de_events",
+                    "label": "events"
                   },
                   {
                     "columnId": "de_indicators",
@@ -1827,8 +1982,36 @@
                     "label": "last_seen"
                   },
                   {
+                    "columnId": "de_status",
+                    "label": "status"
+                  },
+                  {
                     "columnId": "de_rule_name",
                     "label": "rule_name"
+                  },
+                  {
+                    "columnId": "de_severity",
+                    "label": "severity"
+                  },
+                  {
+                    "columnId": "de_confidence",
+                    "label": "confidence"
+                  },
+                  {
+                    "columnId": "de_resolved_by",
+                    "label": "resolved_by"
+                  },
+                  {
+                    "columnId": "de_resolution",
+                    "label": "resolution"
+                  },
+                  {
+                    "columnId": "de_resolution_comment",
+                    "label": "resolution_comment"
+                  },
+                  {
+                    "columnId": "de_date_resolved",
+                    "label": "date_resolved"
                   },
                   {
                     "columnId": "de_rule_uuid",
@@ -1847,12 +2030,8 @@
                     "label": "updated"
                   },
                   {
-                    "columnId": "de_severity",
-                    "label": "severity"
-                  },
-                  {
-                    "columnId": "de_confidence",
-                    "label": "confidence"
+                    "columnId": "de_first_seen",
+                    "label": "first_seen"
                   },
                   {
                     "columnId": "de_muted",
@@ -1867,56 +2046,47 @@
                     "label": "mute_comment"
                   },
                   {
-                    "columnId": "de_sensor_ids",
-                    "label": "sensor_ids"
+                    "columnId": "de_muted_by",
+                    "label": "muted_by"
                   },
                   {
-                    "columnId": "de_primary_pdns_hostnames",
-                    "label": "primary_pdns_hostnames"
+                    "columnId": "de_date_muted",
+                    "label": "date_muted"
                   },
                   {
-                    "columnId": "de_other_pdns_hostnames",
-                    "label": "other_pdns_hostnames"
+                    "columnId": "de_sensor_id",
+                    "label": "sensor_id"
                   },
                   {
-                    "columnId": "de_primary_dhcp_machost_pairs",
-                    "label": "primary_dhcp_machost_pairs"
-                  },
-                  {
-                    "columnId": "de_other_dhcp_machost_pairs",
-                    "label": "other_dhcp_machost_pairs"
-                  },
-                  {
-                    "columnId": "de_vendor",
-                    "label": "vendor"
-                  },
-                  {
-                    "columnId": "de_product",
-                    "label": "product"
-                  },
-                  {
-                    "columnId": "de_signal_version",
-                    "label": "signal_version"
-                  },
-                  {
-                    "columnId": "de_event_type",
-                    "label": "event_type"
-                  },
-                  {
-                    "columnId": "de_subject",
-                    "label": "subject"
+                    "columnId": "de_account_id",
+                    "label": "account_id"
                   },
                   {
                     "columnId": "de_uuid",
                     "label": "uuid"
                   },
                   {
-                    "columnId": "de_customer_id",
-                    "label": "customer_id"
+                    "columnId": "de_username",
+                    "label": "username"
+                  },
+                  {
+                    "columnId": "de_hostname",
+                    "label": "hostname"
+                  },
+                  {
+                    "columnId": "de_primary_attack_id",
+                    "label": "primary_attack_id"
+                  },
+                  {
+                    "columnId": "de_secondary_attack_id",
+                    "label": "secondary_attack_id"
+                  },
+                  {
+                    "columnId": "de_rule_url",
+                    "label": "rule_url"
                   }
                 ]
               },
-              "sortBy": [],
               "tileSettings": {
                 "showBorder": false
               }

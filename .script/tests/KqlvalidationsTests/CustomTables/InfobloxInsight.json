@@ -42,11 +42,11 @@
             "Type": "String"
         },
         {
-            "Name": "BlockedCount",
-            "Type": "Int"
+            "Name": "Name",
+            "Type": "String"
         },
         {
-            "Name": "FeedSource",
+            "Name": "Description",
             "Type": "String"
         },
         {
@@ -54,72 +54,96 @@
             "Type": "String"
         },
         {
-            "Name": "LastSeen",
-            "Type": "DateTime"
-        },
-        {
-            "Name": "NotBlockedCount",
-            "Type": "Int"
-        },
-        {
-            "Name": "EventsCount",
-            "Type": "Int"
-        },
-        {
-            "Name": "Persistent",
-            "Type": "String"
-        },
-        {
-            "Name": "PersistentDate",
-            "Type": "DateTime"
-        },
-        {
-            "Name": "Spreading",
-            "Type": "String"
-        },
-        {
-            "Name": "SpreadingDate",
-            "Type": "String"
-        },
-        {
-            "Name": "FirstSeen",
-            "Type": "DateTime"
-        },
-        {
-            "Name": "ThreatClass",
-            "Type": "String"
-        },
-        {
-            "Name": "ThreatProperty",
-            "Type": "String"
-        },
-        {
-            "Name": "ThreatFamily",
-            "Type": "String"
-        },
-        {
-            "Name": "ThreatType",
-            "Type": "String"
-        },
-        {
             "Name": "Priority",
             "Type": "String"
         },
         {
-            "Name": "DateChanged",
+            "Name": "DateCreated",
             "Type": "String"
         },
         {
-            "Name": "CommentChanger",
+            "Name": "EvaluationStartDate",
             "Type": "String"
         },
         {
-            "Name": "Comment",
+            "Name": "EvaluationEndDate",
             "Type": "String"
+        },
+        {
+            "Name": "TotalEvents",
+            "Type": "Int"
+        },
+        {
+            "Name": "TotalAssets",
+            "Type": "Int"
+        },
+        {
+            "Name": "TotalIndicators",
+            "Type": "Int"
+        },
+        {
+            "Name": "TotalUsers",
+            "Type": "Int"
+        },
+        {
+            "Name": "TotalVerifiedAssets",
+            "Type": "Int"
+        },
+        {
+            "Name": "TotalUnverifiedAssets",
+            "Type": "Int"
+        },
+        {
+            "Name": "ExpiringInDays",
+            "Type": "Int"
+        },
+        {
+            "Name": "ThreatProperties",
+            "Type": "Dynamic"
+        },
+        {
+            "Name": "TimeSavedSeconds",
+            "Type": "Int"
+        },
+        {
+            "Name": "DataObservedVia",
+            "Type": "String"
+        },
+        {
+            "Name": "InsightDetail",
+            "Type": "String"
+        },
+        {
+            "Name": "TopIndicators",
+            "Type": "Dynamic"
+        },
+        {
+            "Name": "TopAssets",
+            "Type": "Dynamic"
+        },
+        {
+            "Name": "ThreatActor",
+            "Type": "Dynamic"
+        },
+        {
+            "Name": "Overview",
+            "Type": "Dynamic"
+        },
+        {
+            "Name": "KeyRecommendations",
+            "Type": "Dynamic"
         },
         {
             "Name": "IncidentSeverity",
             "Type": "String"
+        },
+        {
+            "Name": "FirstSeen",
+            "Type": "String"
+        },
+        {
+            "Name": "EventsCount",
+            "Type": "Int"
         }
     ]
 }
